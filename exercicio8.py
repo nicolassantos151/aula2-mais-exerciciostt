@@ -23,3 +23,50 @@
 #    - Chame o método alimentar() 3 vezes.
 #    - Chame o método status() novamente para conferir o resultado final.
 # ==============================================================================
+
+import random
+
+
+class PetVirtual:
+    def __init__(self, nome, fome=5, felicidade=10):
+        self.nome = nome
+        self.fome = fome
+        self.felicidade = felicidade
+
+    def diminuir_felicidade_aleatoria(self):
+        perda = random.randint(0, 2)
+        self.felicidade -= perda
+        self.felicidade = max(self.felicidade, 0)
+
+    def alimentar(self):
+        self.diminuir_felicidade_aleatoria()
+        if self.fome > 0:
+            self.fome -= 2
+            self.fome = max(self.fome, 0)
+            print(f"[{self.nome}] fome: {self.fome}")
+        else:
+            print("ele vai explodir de tanto comer")
+            print(f"[{self.nome}] fome: {self.fome}")
+
+    def brincar(self):
+        self.diminuir_felicidade_aleatoria()
+        self.felicidade += 2
+        self.fome += 1
+        print(f"[{self.nome}] felicidade: {self.felicidade} | fome: {self.fome}")
+
+    def status(self):
+        self.diminuir_felicidade_aleatoria()
+        print(f"status - [{self.nome}] felicidade: {self.felicidade} | fome: {self.fome}")
+
+pet = PetVirtual("rizoto")
+
+pet.status()
+
+pet.brincar()
+pet.brincar()
+
+pet.alimentar()
+pet.alimentar()
+pet.alimentar()
+
+pet.status()

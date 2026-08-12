@@ -21,3 +21,40 @@
 #    - Chame o método radar_de_velocidade().
 #    - Chame o método frear() 3 vezes para validar a trava de velocidade zero.
 # ==============================================================================
+
+class Bicicleta:
+    def __init__(self, modelo, velocidade=0):
+        self.modelo = modelo
+        self.velocidade = velocidade
+
+    def pedalar(self):
+        velocidade_anterior = self.velocidade
+        if self.velocidade + 5 <= 60:
+            self.velocidade += 5
+        else:
+            self.velocidade = 60
+        print(f"pedalando... velocidade anterior: {velocidade_anterior} km/h | nova velocidade: {self.velocidade} km/h")
+
+    def frear(self):
+        velocidade_anterior = self.velocidade
+        if self.velocidade - 5 >= 0:
+            self.velocidade -= 5
+        else:
+            self.velocidade = 0
+        print(f"parando... velocidade anterior: {velocidade_anterior} km/h | nova velocidade: {self.velocidade} km/h")
+
+    def radar_de_velocidade(self):
+        print(f"A bicicleta {self.modelo} está a {self.velocidade} km/h.")
+
+
+# Testando o código
+minha_bike = Bicicleta("Bike do Ben10")
+
+minha_bike.pedalar()
+minha_bike.pedalar()
+
+minha_bike.radar_de_velocidade()
+
+minha_bike.frear()
+minha_bike.frear()
+minha_bike.frear()
