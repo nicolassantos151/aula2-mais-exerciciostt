@@ -1,4 +1,4 @@
-class itembiblioteca:
+class ItemBiblioteca:
     def __init__(self, titulo: str, codigo: int):
         self.titulo = titulo
         self.codigo = codigo
@@ -14,7 +14,7 @@ class itembiblioteca:
         self.disponivel = True
 
 
-class Livro(itembiblioteca):
+class Livro(ItemBiblioteca):
     def __init__(self, titulo: str, codigo: int, autor: str, num_paginas: int):
         super().__init__(titulo, codigo)
         self.autor = autor
@@ -26,7 +26,7 @@ class Usuario:
         self.nome = nome
         self.itens_emprestados = []
 
-    def pegar_item(self, item: itembiblioteca):
+    def pegar_item(self, item: ItemBiblioteca):
         if item.disponivel:
             item.emprestar()
             self.itens_emprestados.append(item)
@@ -34,7 +34,7 @@ class Usuario:
         else:
             print(f"desculpe, '{item.titulo}' nao tem no momento.")
 
-    def devolver_item(self, item: itembiblioteca):
+    def devolver_item(self, item: ItemBiblioteca):
         if item in self.itens_emprestados:
             item.devolver()
             self.itens_emprestados.remove(item)

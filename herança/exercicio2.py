@@ -1,4 +1,4 @@
-class carro:
+class Carro:
     def __init__(self, marca, modelo):
         self.marca = marca
         self.modelo = modelo
@@ -12,7 +12,7 @@ class carro:
             print("sem combustivel para acelerar!")
 
 
-class carroeletrico(carro):
+class CarroEletrico(Carro):
     def __init__(self, marca, modelo):
         super().__init__(marca, modelo)
         del self.combustivel
@@ -34,9 +34,8 @@ class carroeletrico(carro):
         print(f"nivel da bateria: {self.bateria}%")
         print("-" * 30)
 
-carro = carroeletrico("BYD", "Dolphin")
+carro = CarroEletrico("BYD", "Dolphin")
 
-#carro eletrico e coisa de tchola!!
 
 carro.painel()
 carro.acelerar()
